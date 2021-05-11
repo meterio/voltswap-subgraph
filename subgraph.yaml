@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: rinkeby
+    network: mainnet
     source:
-      address: '0xCcC33AB2808306732746C15F5Aa9B38cB65224c3'
+      address: '0x9010c6F0Bbb5D5CDBa88bFEf987A8597dCCA4b90'
       abi: Factory
-      startBlock: 10000834
+      startBlock: 1492277
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -34,7 +34,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pair
-    network: rinkeby
+    network: mainnet
     source:
       abi: Pair
     mapping:

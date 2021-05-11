@@ -1,0 +1,8 @@
+1. 
+yarn & yarn codegen
+
+2.
+yarn create-local
+
+3.
+yarn deploy-local
