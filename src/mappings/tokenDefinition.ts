@@ -3,6 +3,7 @@ import {
   BigInt,
 } from "@graphprotocol/graph-ts"
 
+
 // Initialize a Token Definition with the attributes
 export class TokenDefinition {
   address : Address
@@ -24,7 +25,7 @@ export class TokenDefinition {
 
     // Add MTRG
     let tokenMeterGov = new TokenDefinition(
-      Address.fromString('0x228ebbee999c6a7ad74a6130e81b12f9fe237ba3'),
+      Address.fromString('0x228ebBeE999c6a7ad74A6130E81b12f9Fe237Ba3'),
       'MTRG',
       'MeterGov',
       BigInt.fromI32(18)
@@ -33,7 +34,7 @@ export class TokenDefinition {
 
     // Add MTR
     let tokenMeter = new TokenDefinition(
-      Address.fromString('0x687a6294d0d6d63e751a059bf1ca68e4ae7b13e2'),
+      Address.fromString('0x687A6294D0D6d63e751A059bf1ca68E4AE7B13E2'),
       'MTR',
       'Meter',
       BigInt.fromI32(18)

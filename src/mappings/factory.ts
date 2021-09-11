@@ -13,10 +13,14 @@ import {
   ZERO_BI,
 } from './helpers'
 
+
+
 export function handleNewPair(event: PairCreated): void {
   // load factory (create if first exchange)
   let factory = UniswapFactory.load(FACTORY_ADDRESS)
+//console.log("Factory", factory)
   if (factory === null) {
+    //console.log("Factory null here", factory)
     factory = new UniswapFactory(FACTORY_ADDRESS)
     factory.pairCount = 0
     factory.totalVolumeETH = ZERO_BD
@@ -31,6 +35,8 @@ export function handleNewPair(event: PairCreated): void {
     bundle.ethPrice = ZERO_BD
     bundle.save()
   }
+
+  //console.log("Factory not null", factory)
   factory.pairCount = factory.pairCount + 1
   factory.save()
 
@@ -38,6 +44,7 @@ export function handleNewPair(event: PairCreated): void {
   let token0 = Token.load(event.params.token0.toHexString())
   let token1 = Token.load(event.params.token1.toHexString())
 
+  
   // fetch info if null
   if (token0 === null) {
     token0 = new Token(event.params.token0.toHexString())
@@ -104,7 +111,11 @@ export function handleNewPair(event: PairCreated): void {
   pair.token0Price = ZERO_BD
   pair.token1Price = ZERO_BD
 
+  //console.log("pair ", pair)
   // create the tracked contract based on the template
+  //console.log("event pair", event.params.pair)
+  
+  
   PairTemplate.create(event.params.pair)
 
   // save updated values

@@ -25,6 +25,7 @@ export function updateUniswapDayData(event: EthereumEvent): UniswapDayData {
   uniswapDayData.txCount = uniswap.txCount
   uniswapDayData.save()
 
+  
   return uniswapDayData as UniswapDayData
 }
 

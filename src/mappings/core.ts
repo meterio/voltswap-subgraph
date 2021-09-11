@@ -276,9 +276,14 @@ export function handleSync(event: Sync): void {
 }
 
 export function handleMint(event: Mint): void {
+  
   let transaction = Transaction.load(event.transaction.hash.toHexString())
+  if(transaction ){
   let mints = transaction.mints
+
+  
   let mint = MintEvent.load(mints[mints.length - 1])
+  
 
   let pair = Pair.load(event.address.toHex())
   let uniswap = UniswapFactory.load(FACTORY_ADDRESS)
@@ -311,16 +316,20 @@ export function handleMint(event: Mint): void {
   pair.save()
   uniswap.save()
 
+  
+
   mint.sender = event.params.sender
   mint.amount0 = token0Amount as BigDecimal
   mint.amount1 = token1Amount as BigDecimal
   mint.logIndex = event.logIndex
   mint.amountUSD = amountTotalUSD as BigDecimal
   mint.save()
+   // update the LP position
+   let liquidityPosition = createLiquidityPosition(event.address, mint.to as Address)
+   createLiquiditySnapshot(liquidityPosition, event)
+  
 
-  // update the LP position
-  let liquidityPosition = createLiquidityPosition(event.address, mint.to as Address)
-  createLiquiditySnapshot(liquidityPosition, event)
+ 
 
   // update day entities
   updatePairDayData(event)
@@ -328,6 +337,8 @@ export function handleMint(event: Mint): void {
   updateUniswapDayData(event)
   updateTokenDayData(token0 as Token, event)
   updateTokenDayData(token1 as Token, event)
+  }
+  
 }
 
 export function handleBurn(event: Burn): void {
@@ -447,7 +458,7 @@ export function handleSwap(event: Swap): void {
   pair.txCount = pair.txCount.plus(ONE_BI)
   pair.save()
 
-  // update global values, only used tracked amounts for volume
+  // // update global values, only used tracked amounts for volume
   let uniswap = UniswapFactory.load(FACTORY_ADDRESS)
   uniswap.totalVolumeUSD = uniswap.totalVolumeUSD.plus(trackedAmountUSD)
   uniswap.totalVolumeETH = uniswap.totalVolumeETH.plus(trackedAmountETH)
