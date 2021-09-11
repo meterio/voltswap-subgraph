@@ -29,7 +29,7 @@ export function getEthPriceInUSD(): BigDecimal {
       .plus(usdtPair.token1Price.times(usdtWeight))
     // dai and USDC have been created
   } else if (busdPair !== null && usdcPair !== null) {
-    let totalLiquidityETH = daiPair.reserve0.plus(usdcPair.reserve0)
+    let totalLiquidityETH = busdPair.reserve0.plus(usdcPair.reserve0)
     let busdWeight = busdPair.reserve0.div(totalLiquidityETH)
     let usdcWeight = usdcPair.reserve0.div(totalLiquidityETH)
     return busdPair.token1Price.times(busdWeight).plus(usdcPair.token1Price.times(usdcWeight))
