@@ -51,7 +51,8 @@ let WHITELIST: string[] = [
   '0x5fa41671c48e3c951afc30816947126ccc8c162e', //usdt
   '0x8df95e66cb0ef38f91d2776da3c921768982fba0', //voltswap
   '0xc1f6C86ABEe8e2e0B6fd5BD80F0b51fef783635C', //wbtc
-  '0x79a61d3a28f8c8537a3df63092927cfa1150fb3c' //weth
+  '0x79a61d3a28f8c8537a3df63092927cfa1150fb3c', //weth
+  '0xb158870beB809Ad955Bf56065C5C10D7Fd957cC0'  //movr
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
