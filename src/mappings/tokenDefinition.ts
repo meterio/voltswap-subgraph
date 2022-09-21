@@ -21,25 +21,43 @@ export class TokenDefinition {
 
   // Get all tokens with a static defintion
   static getStaticDefinitions(): Array<TokenDefinition> {
-    let staticDefinitions = new Array<TokenDefinition>(2)
+    let staticDefinitions = new Array<TokenDefinition>(4)
 
     // Add MTRG
     let tokenMeterGov = new TokenDefinition(
-      Address.fromString('0x228ebBeE999c6a7ad74A6130E81b12f9Fe237Ba3'),
+      Address.fromString('0xBd2949F67DcdC549c6Ebe98696449Fa79D988A9F'),
       'MTRG',
-      'MeterGov',
+      'Meter Governance mapped by Meter.io',
       BigInt.fromI32(18)
     )
     staticDefinitions.push(tokenMeterGov)
 
-    // Add MTR
-    let tokenMeter = new TokenDefinition(
-      Address.fromString('0x687A6294D0D6d63e751A059bf1ca68E4AE7B13E2'),
-      'MTR',
-      'Meter',
+    // Add TFUEL
+    let tokenTFUEL = new TokenDefinition(
+      Address.fromString('0x4dc08b15ea0e10b96c41aec22fab934ba15c983e'),
+      'TFUEL',
+      'Theta Fuel',
       BigInt.fromI32(18)
     )
-    staticDefinitions.push(tokenMeter)
+    staticDefinitions.push(tokenTFUEL)
+
+    let weth = new TokenDefinition(
+      Address.fromString('0x3674d64aab971ab974b2035667a4b3d09b5ec2b3'),
+      'ETH_SWAP',
+      'ETH_SWAP',
+      BigInt.fromI32(18)
+    )
+
+    staticDefinitions.push(weth) 
+    let bnb = new TokenDefinition(
+      Address.fromString('0xdff772186ace9b5513fb46d7b05b36efa0a4a20d'),
+      'BNB_SWAP',
+      'BNB_SWAP',
+      BigInt.fromI32(18)
+    )
+    staticDefinitions.push(bnb)
+
+   
 
     return staticDefinitions
   }

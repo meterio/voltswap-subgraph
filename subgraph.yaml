@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: meter
+    network: theta
     source:
-      address: '0x56aD9A9149685b290ffeC883937caE191e193135'
+      address: '0xa2De4F2cC54dDFdFb7D27E81b9b9772bd45bf89d'
       abi: Factory
-      startBlock: 5279902
+      startBlock: 12675961
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -35,7 +35,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pair
-    network: meter
+    network: theta
     source:
       abi: Pair
     mapping:
@@ -62,12 +62,3 @@ templates:
           handler: handleTransfer
         - event: Sync(uint112,uint112)
           handler: handleSync
-
-
-  
-       
-
-        
-
-             
-        
